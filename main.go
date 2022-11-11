@@ -72,6 +72,11 @@ func tags(ctx context.Context) ([]string, error) {
 	cmd := exec.CommandContext(ctx, "git", "tag")
 	b, err := cmd.CombinedOutput()
 	fmt.Fprintln(os.Stdout, b)
+
+	cmd2 := exec.CommandContext(ctx, "git", "branch")
+	b2, _ := cmd2.CombinedOutput()
+	fmt.Fprintln(os.Stdout, b2)
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to run `git tag`: %v", err)
 	}
